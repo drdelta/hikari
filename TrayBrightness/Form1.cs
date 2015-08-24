@@ -30,11 +30,17 @@ namespace TrayBrightness
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
 
+        }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

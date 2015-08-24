@@ -1,9 +1,0 @@
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\bin\Debug\TrayBrightness.exe.config
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\bin\Debug\TrayBrightness.exe
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\bin\Debug\TrayBrightness.pdb
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.csprojResolveAssemblyReference.cache
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.Form1.resources
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.Properties.Resources.resources
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.csproj.GenerateResource.Cache
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.exe
-c:\users\emil\documents\visual studio 2013\Projects\TrayBrightness\TrayBrightness\obj\Debug\TrayBrightness.pdb
