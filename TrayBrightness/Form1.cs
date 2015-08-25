@@ -15,7 +15,7 @@ namespace TrayBrightness
         public Form1()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Minimized;
+            //this.WindowState = FormWindowState.Minimized;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,7 +40,12 @@ namespace TrayBrightness
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
+        }
 
+        private void minimizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
