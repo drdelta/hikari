@@ -47,5 +47,17 @@ namespace TrayBrightness
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                this.WindowState = FormWindowState.Normal;
+            
+            }
+      //      else
+      //          contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+
+        }
+
     }
 }

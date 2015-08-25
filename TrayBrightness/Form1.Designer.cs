@@ -54,7 +54,7 @@
             this.minimizeToolStripMenuItem,
             this.toolStripMenuItem2});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(153, 92);
+            this.contextMenu.Size = new System.Drawing.Size(124, 70);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItem1
