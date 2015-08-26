@@ -33,8 +33,10 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTo30ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTo50ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,9 +54,11 @@
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.minimizeToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.setTo30ToolStripMenuItem,
+            this.setTo50ToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(124, 70);
+            this.contextMenu.Size = new System.Drawing.Size(153, 136);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItem1
@@ -64,6 +68,13 @@
             this.toolStripMenuItem1.Text = "Normal";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // minimizeToolStripMenuItem
+            // 
+            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.minimizeToolStripMenuItem.Text = "Minimize";
+            this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
@@ -71,12 +82,19 @@
             this.toolStripMenuItem2.Text = "Exit";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // minimizeToolStripMenuItem
+            // setTo30ToolStripMenuItem
             // 
-            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.minimizeToolStripMenuItem.Text = "Minimize";
-            this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
+            this.setTo30ToolStripMenuItem.Name = "setTo30ToolStripMenuItem";
+            this.setTo30ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setTo30ToolStripMenuItem.Text = "set to 30";
+            this.setTo30ToolStripMenuItem.Click += new System.EventHandler(this.setTo30ToolStripMenuItem_Click);
+            // 
+            // setTo50ToolStripMenuItem
+            // 
+            this.setTo50ToolStripMenuItem.Name = "setTo50ToolStripMenuItem";
+            this.setTo50ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setTo50ToolStripMenuItem.Text = "set to 50";
+            this.setTo50ToolStripMenuItem.Click += new System.EventHandler(this.setTo50ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -107,6 +125,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem minimizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setTo30ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setTo50ToolStripMenuItem;
     }
 }
 

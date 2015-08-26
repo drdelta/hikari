@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrayBrightness.Win32;
 
 namespace TrayBrightness
 {
@@ -19,4 +20,5 @@ namespace TrayBrightness
             Application.Run(new Form1());
         }
     }
+
 }

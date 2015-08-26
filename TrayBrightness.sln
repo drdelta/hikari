@@ -5,6 +5,15 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrayBrightness", "TrayBrightness\TrayBrightness.csproj", "{574C2812-791C-47BA-9AA7-7C54E88C4B96}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AB40897-632B-4616-848A-B87964D2CDDA}"
+	ProjectSection(SolutionItems) = preProject
+		Display\FeatureType.cs = Display\FeatureType.cs
+		Display\Monitor.cs = Display\Monitor.cs
+		Display\MonitorCollection.cs = Display\MonitorCollection.cs
+		Display\MonitorFeature.cs = Display\MonitorFeature.cs
+		TrayBrightness\Win32.cs = TrayBrightness\Win32.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

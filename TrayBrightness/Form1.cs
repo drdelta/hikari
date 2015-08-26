@@ -7,16 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrayBrightness.Monitor;
+using TrayBrightness.MonitorCollection;
+using TrayBrightness.MonitorFeature;
+using TrayBrightness.FeatureType;
+using TrayBrightness.Win32;
+//[DllImport("dxva2.dll")]
 
 namespace TrayBrightness
 {
     public partial class Form1 : Form
     {
+        private readonly MonitorCollection _monitorCollection = new MonitorCollection();
+        private Monitor _currentMonitor;
         public Form1()
         {
             InitializeComponent();
             //this.WindowState = FormWindowState.Minimized;
-        }
+
+            /// Initialization
+            /// 1. Enumerate Displays
+            var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
+            NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);  
+            /// 2. Check supported functions / check brightness support
+
+       }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -47,17 +62,20 @@ namespace TrayBrightness
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+ 
+        private void setTo30ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                this.WindowState = FormWindowState.Normal;
-            
-            }
-      //      else
-      //          contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+
+           // SetMonitorBrightness(1;100);
+        }
+
+        private void setTo50ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
 
+
+
     }
+  
 }
