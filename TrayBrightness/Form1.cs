@@ -16,7 +16,6 @@ namespace TrayBrightness
     public partial class Form1 : Form
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
-        private Monitor _currentMonitor;
         public Form1()
         {
             InitializeComponent();
@@ -64,12 +63,12 @@ namespace TrayBrightness
         {
             //uint newValue = 0;
             //MonitorFeature.Brightness.Current = newValue;
-            NativeMethods.SetMonitorBrightness(_currentMonitor.HPhysicalMonitor, 30);
+            NativeMethods.SetMonitorBrightness(_monitorCollection[0].HPhysicalMonitor, 30);
         }
 
         private void setTo50ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            NativeMethods.SetMonitorBrightness(_monitorCollection[0].HPhysicalMonitor, 50);
         }
 
 
