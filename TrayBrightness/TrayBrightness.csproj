@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigWindow.Designer.cs">
+      <DependentUpon>ConfigWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FeatureType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

@@ -78,6 +78,27 @@ namespace TrayBrightness
             _monitorCollection.Add(hMonitor);
             return true;
         }
+
+        private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)
+        {
+
+        }
+
+        private void configureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ConfigWindow.Show();
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BrightnessScroll_Scroll(object sender, ScrollEventArgs e)
+        {
+            uint i = (uint) BrightnessScroll.Value; 
+            NativeMethods.SetMonitorBrightness(_monitorCollection[0].HPhysicalMonitor, i);
+        }
     }
   
 }
