@@ -23,6 +23,7 @@ namespace TrayBrightness
     public partial class MainWindow : Window
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
+        //public uint initSliderValue = 40;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace TrayBrightness
             NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);
             /// 2. Check supported functions / check brightness support
             //TrayBrightness.Models.Display.Monitor();
+
         }
 
         /////// TODO //////////
@@ -54,7 +56,6 @@ namespace TrayBrightness
             _monitorCollection.Add(hMonitor);
             return true;
         }
-
 
     }
 }

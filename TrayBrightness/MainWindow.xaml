@@ -1,9 +1,10 @@
 ﻿<Window x:Class="TrayBrightness.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="84" Width="360" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" Opacity="0.7" Background="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}">
     <Grid>
-        <Slider HorizontalAlignment="Left" Margin="122,166,0,0" VerticalAlignment="Top" Width="306" ValueChanged="Slider_ValueChanged" Maximum="100"/>
+        <Slider HorizontalAlignment="Left" Margin="62,37,0,0" VerticalAlignment="Top" Width="217" ValueChanged="Slider_ValueChanged" Maximum="100" Name="slValue"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="48" Margin="293,37,0,0"/>
 
     </Grid>
 </Window>
