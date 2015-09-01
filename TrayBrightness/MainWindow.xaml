@@ -1,0 +1,9 @@
+﻿<Window x:Class="TrayBrightness.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Slider HorizontalAlignment="Left" Margin="122,166,0,0" VerticalAlignment="Top" Width="306" ValueChanged="Slider_ValueChanged" Maximum="100"/>
+
+    </Grid>
+</Window>

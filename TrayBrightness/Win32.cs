@@ -24,7 +24,7 @@ namespace TrayBrightness.Win32
         public static extern IntPtr MonitorFromWindow([In] IntPtr hwnd, uint dwFlags);
 
         [DllImport("user32.dll", EntryPoint = "MonitorFromPoint", SetLastError = true)]
-        public static extern IntPtr MonitorFromPoint([In] Point pt, uint dwFlags);
+        public static extern IntPtr MonitorFromPoint([In] System.Drawing.Point pt, uint dwFlags);
 
         [DllImport("user32.dll", EntryPoint = "MonitorFromRect", SetLastError = true)]
         public static extern IntPtr MonitorFromRect(ref Rectangle lprect, uint dwFlags);
