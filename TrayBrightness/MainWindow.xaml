@@ -11,6 +11,7 @@
                         Opacity="0.7" 
                         Background="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"
                         WindowStartupLocation="Manual" 
+                        WindowState="Minimized"
                         AllowsTransparency="True" 
                         WindowStyle="None" 
                         ShowTitleBar="False"

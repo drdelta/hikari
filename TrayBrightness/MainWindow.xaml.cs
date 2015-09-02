@@ -25,6 +25,7 @@ namespace TrayBrightness
     /// mahapp.metro style
     /// http://mahapps.com/guides/quick-start.html
     /// </summary>
+    
     public partial class MainWindow : MetroWindow
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
@@ -34,6 +35,7 @@ namespace TrayBrightness
         public MainWindow()
         {
             InitializeComponent();
+            this.Hide();
             /// Enumerate Displays
             var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
             NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);
@@ -42,6 +44,25 @@ namespace TrayBrightness
             var desktopWorkingArea = SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
+
+            System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
+            ni.Icon = new System.Drawing.Icon("main.ico");
+            ni.Visible = true;
+            ni.Click +=
+                delegate (object sender, EventArgs args)
+                {
+                    if (WindowState == WindowState.Minimized)
+                    {
+                        this.WindowState = WindowState.Normal;
+                        this.Show();
+                    }
+                    else if (WindowState == WindowState.Normal)
+                    {
+                        this.Hide();
+                        this.WindowState = WindowState.Minimized;
+
+                    }
+                };
         }
 
         /////// TODO //////////
@@ -50,6 +71,14 @@ namespace TrayBrightness
         // TRAY icon and CONTROLS
         //      Config
         //      Exit
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+                this.Hide();
+
+            base.OnStateChanged(e);
+        }
 
         private void ReadInfo(Monitor m) // Resd info about current monitor
         {
@@ -75,5 +104,6 @@ namespace TrayBrightness
             _monitorCollection.Add(hMonitor);
             return true;
         }
+
     }
 }
