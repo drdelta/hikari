@@ -23,15 +23,16 @@ namespace TrayBrightness
     public partial class MainWindow : Window
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
-        //public uint initSliderValue = 40;
+        // Choose first monitor in array
+        int currentMonitor = 0; ////////!!!!!!!!!!!!!!!!!!!!!!!!!
+
         public MainWindow()
         {
             InitializeComponent();
-            /// 1. Enumerate Displays
+            /// Enumerate Displays
             var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
             NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);
-            /// 2. Check supported functions / check brightness support
-            //TrayBrightness.Models.Display.Monitor();
+            ReadInfo(_monitorCollection[currentMonitor]);
 
             var desktopWorkingArea = SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
@@ -39,18 +40,28 @@ namespace TrayBrightness
         }
 
         /////// TODO //////////
-        // GOTO right-bottom corner of the screen
         // COLOR change to aero/ metro
 
         // TRAY icon and CONTROLS
         //      Config
         //      Exit
 
+        private void ReadInfo(Monitor m) // Resd info about current monitor
+        {
+            // Set Name 
+            monName.Text = m.Name;
+            // Set slider
+            slValue.IsEnabled = m.Brightness.Supported;
+            slValue.Maximum = m.Brightness.Max;
+            slValue.Value = m.Brightness.Current;
+
+        }
+
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             uint i = (uint)e.NewValue;
-            NativeMethods.SetMonitorBrightness(_monitorCollection[0].HPhysicalMonitor, i);
+            NativeMethods.SetMonitorBrightness(_monitorCollection[currentMonitor].HPhysicalMonitor, i);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
