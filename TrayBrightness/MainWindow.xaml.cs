@@ -14,13 +14,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrayBrightness.Models.Display;
 using TrayBrightness.Win32;
+using MahApps.Metro.Controls;
 
 namespace TrayBrightness
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// API code:
+    /// https://code.google.com/p/monitorprofiler/source/browse/
+    /// mahapp.metro style
+    /// http://mahapps.com/guides/quick-start.html
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
         // Choose first monitor in array
