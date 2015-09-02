@@ -33,6 +33,9 @@ namespace TrayBrightness
             /// 2. Check supported functions / check brightness support
             //TrayBrightness.Models.Display.Monitor();
 
+            var desktopWorkingArea = SystemParameters.WorkArea;
+            this.Left = desktopWorkingArea.Right - this.Width;
+            this.Top = desktopWorkingArea.Bottom - this.Height;
         }
 
         /////// TODO //////////
@@ -56,6 +59,5 @@ namespace TrayBrightness
             _monitorCollection.Add(hMonitor);
             return true;
         }
-
     }
 }
