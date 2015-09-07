@@ -45,7 +45,11 @@ namespace TrayBrightness
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
 
+            /// Create a tray icon & menu
             System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
+            System.Windows.Forms.ContextMenu cm = new System.Windows.Forms.ContextMenu();
+            System.Windows.Forms.MenuItem mi1 = new System.Windows.Forms.MenuItem();
+            System.Windows.Forms.MenuItem mi2 = new System.Windows.Forms.MenuItem();
             ni.Icon = new System.Drawing.Icon("main.ico");
             ni.Visible = true;
             ni.Click +=
@@ -63,6 +67,21 @@ namespace TrayBrightness
 
                     }
                 };
+            ni.ContextMenu = cm;
+            cm.MenuItems.AddRange(
+                    new System.Windows.Forms.MenuItem[] { mi2 });
+            mi2.Index = 0;
+            mi2.Text = "C&onfiguration";
+            cm.MenuItems.AddRange(
+                    new System.Windows.Forms.MenuItem[] { mi1 });
+            mi1.Index = 1;
+            mi1.Text = "E&xit";
+            mi1.Click +=
+                delegate (object sender, EventArgs args)
+                {
+                    Application.Current.Shutdown();
+                };
+
         }
 
         /////// TODO //////////
