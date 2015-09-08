@@ -26,7 +26,7 @@ namespace TrayBrightness
     /// mahapp.metro style
     /// http://mahapps.com/guides/quick-start.html
     /// hardcodet notifyicon for wpf
-    /// http://www.hardcodet.net/wpf-notifyicon
+    /// http://www.codeproject.com/Articles/36468/WPF-NotifyIcon
     /// </summary>
 
     public partial class MainWindow : MetroWindow
@@ -50,6 +50,8 @@ namespace TrayBrightness
             var desktopWorkingArea = SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
+
+            
 /*
             /// Create a tray icon & menu
             System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
@@ -104,14 +106,6 @@ namespace TrayBrightness
         //// choose monitor
         //// calibration between monitors
         //// light sensor settings
-
-        private TaskbarIcon tb;
-
-        private void InitApplication()
-        {
-            //initialize NotifyIcon
-            tb = (TaskbarIcon)FindResource("MyNotifyIcon");
-        }
 
         protected override void OnStateChanged(EventArgs e)
         {
