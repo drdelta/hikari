@@ -23,10 +23,13 @@
            x:Name="MyNotifyIcon"
            IconSource="main.ico"
            ToolTipText="{Binding ElementName=monName, StringFormat=\{0:n0\}, Path=Text, UpdateSourceTrigger=PropertyChanged}" 
+           LeftClickCommand="{commands:ToggleWindowCommand}"
          >
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Settings"
+                              Command="{commands:SettingsCommand}"
+                              CommandParameter="{Binding}"
                               >
                     </MenuItem>
 
@@ -39,14 +42,6 @@
                      </MenuItem>
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
-  <!--          <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu
-                    Background="LightCoral">
-                    <MenuItem Header="Settings" />
-                    <MenuItem Header="Exit" />
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
--->
         </tb:TaskbarIcon>
 
         <Slider 
