@@ -22,8 +22,9 @@ namespace TrayBrightness
     public partial class MainWindow : MetroWindow
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
+        public static int selectedMonitor;
         // Choose first monitor in array
-        public int currentMonitor = 0; ////////!!!!!!!!!!!!!!!!!!!!!!!!!
+        public int currentMonitor = selectedMonitor; ////////!!!!!!!!!!!!!!!!!!!!!!!!!
         //public static string[] monCollection;
         public static ArrayList monCollection = new ArrayList();
 
@@ -37,7 +38,7 @@ namespace TrayBrightness
             /// Enumerate Displays
             var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
             NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);
-            ReadInfo(_monitorCollection[currentMonitor]);
+            ReadInfo(_monitorCollection[selectedMonitor]);
             foreach (Monitor monitor in _monitorCollection)
             {
                 monCollection.Add(monitor.Name);
@@ -46,6 +47,7 @@ namespace TrayBrightness
             var desktopWorkingArea = SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
+            Console.WriteLine(selectedMonitor);
         }
         /*
                 private TaskbarIcon tb;
@@ -104,7 +106,7 @@ namespace TrayBrightness
        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             uint i = (uint)e.NewValue;
-            NativeMethods.SetMonitorBrightness(_monitorCollection[currentMonitor].HPhysicalMonitor, i);
+            NativeMethods.SetMonitorBrightness(_monitorCollection[selectedMonitor].HPhysicalMonitor, i);
         }
 
         private bool MonitorEnum(IntPtr hMonitor, IntPtr hdcMonitor, ref System.Drawing.Rectangle lprcMonitor, IntPtr dwData)
