@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Windows;
+using System.Collections;
 using TrayBrightness.Models.Display;
 using TrayBrightness.Win32;
 using MahApps.Metro.Controls;
+using System.Windows.Forms;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace TrayBrightness
 {
@@ -20,7 +23,9 @@ namespace TrayBrightness
     {
         private readonly MonitorCollection _monitorCollection = new MonitorCollection();
         // Choose first monitor in array
-        int currentMonitor = 0; ////////!!!!!!!!!!!!!!!!!!!!!!!!!
+        public int currentMonitor = 0; ////////!!!!!!!!!!!!!!!!!!!!!!!!!
+        //public static string[] monCollection;
+        public static ArrayList monCollection = new ArrayList();
 
         public MainWindow()
         {
@@ -33,12 +38,42 @@ namespace TrayBrightness
             var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
             NativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MyInfoEnumProc, IntPtr.Zero);
             ReadInfo(_monitorCollection[currentMonitor]);
-
+            foreach (Monitor monitor in _monitorCollection)
+            {
+                monCollection.Add(monitor.Name);
+            }
+            
             var desktopWorkingArea = SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
-
         }
+        /*
+                private TaskbarIcon tb;
+
+                private void InitApplication()
+                {
+                    //initialize NotifyIcon
+                    tb = (TaskbarIcon)FindResource("MyNotifyIcon");
+                }
+
+                private void MyNotifyIcon_MouseClick(object sender, MouseEventArgs e)
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        if (WindowState == WindowState.Minimized)
+                        {
+                            this.WindowState = WindowState.Normal;
+                            this.Show();
+                        }
+                        else if (WindowState == WindowState.Normal)
+                        {
+                            this.Hide();
+                            this.WindowState = WindowState.Minimized;
+                        }
+                    }
+                }
+        */
+
 
 
         /////// TODO //////////
@@ -56,7 +91,7 @@ namespace TrayBrightness
             base.OnStateChanged(e);
         }
 
-        private void ReadInfo(Monitor m) // Resd info about current monitor
+        private void ReadInfo(Monitor m) // Read info about current monitor
         {
             // Set Name 
             monName.Text = m.Name;

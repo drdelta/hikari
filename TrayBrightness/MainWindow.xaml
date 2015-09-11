@@ -20,7 +20,7 @@
 >
     <Grid>
        <tb:TaskbarIcon 
-           x:Name="MyNotifyIcon"
+           x:Name="MyNotifyIcon" 
            IconSource="main.ico"
            ToolTipText="{Binding ElementName=monName, StringFormat=\{0:n0\}, Path=Text, UpdateSourceTrigger=PropertyChanged}" 
            LeftClickCommand="{commands:ToggleWindowCommand}"
@@ -32,9 +32,7 @@
                               CommandParameter="{Binding}"
                               >
                     </MenuItem>
-
                     <Separator />
-
                     <MenuItem Header="Exit"
                               Command="{commands:ExitCommand}"
                               CommandParameter="{Binding}"
