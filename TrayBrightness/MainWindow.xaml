@@ -16,7 +16,7 @@
                         WindowState="Minimized" 
                         ShowTitleBar="False"
                         IsWindowDraggable="False" 
-                        WindowStyle="None"
+                        WindowStyle="None" IsCloseButtonEnabled="False" IsMaxRestoreButtonEnabled="False" IsMinButtonEnabled="False" ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False" ShowSystemMenuOnRightClick="False"
 >
     <Grid>
        <tb:TaskbarIcon 

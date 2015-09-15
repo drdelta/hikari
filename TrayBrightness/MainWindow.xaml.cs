@@ -31,9 +31,13 @@ namespace TrayBrightness
         public MainWindow()
         {
             InitializeComponent();
+            this.ShowCloseButton = false;
             this.Hide();
             //this.WindowState = WindowState.Normal;
             //this.Show();
+
+            SettingsWindow sw = new SettingsWindow();
+            sw.Hide();
 
             /// Enumerate Displays
             var MyInfoEnumProc = new NativeMethods.MonitorEnumDelegate(MonitorEnum);
@@ -78,21 +82,31 @@ namespace TrayBrightness
                 };
             ni.ContextMenu = cm;
             cm.MenuItems.AddRange(
-                    new System.Windows.Forms.MenuItem[] { mi2 });
+                    new MenuItem[] { mi2 });
             mi2.Index = 0;
             mi2.Text = "C&onfiguration";
+            mi2.Click +=
+                delegate (object sender, EventArgs args)
+                {
+                    sw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    if (sw.Visibility == Visibility.Hidden)
+                    {
+                        sw.WindowState = WindowState.Normal;
+                        sw.ShowDialog();
+                    } //////!!!!!!!!!!!!!!!!!!!! ON CLOSE SET TO HIDDEN
+                };
             cm.MenuItems.AddRange(
-                    new System.Windows.Forms.MenuItem[] { mi1 });
+                    new MenuItem[] { mi1 });
             mi1.Index = 1;
             mi1.Text = "E&xit";
             mi1.Click +=
                 delegate (object sender, EventArgs args)
                 {
+                    System.Windows.Application.Current.MainWindow.Hide();
                     System.Windows.Application.Current.Shutdown();
                 };
 
-
-
+ 
         }
 
 
