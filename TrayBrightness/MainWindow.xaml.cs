@@ -48,19 +48,20 @@ namespace TrayBrightness
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
             Console.WriteLine(selectedMonitor);
-        }
-        /*
-                private TaskbarIcon tb;
 
-                private void InitApplication()
+            
+            /// Create a tray icon & menu
+            NotifyIcon ni = new NotifyIcon();
+            ContextMenu cm = new ContextMenu();
+            MenuItem mi1 = new MenuItem();
+            MenuItem mi2 = new MenuItem();
+            ni.Icon = new System.Drawing.Icon("main.ico");
+            ni.Visible = true;
+            ni.Click +=
+                delegate (object sender, EventArgs e)
                 {
-                    //initialize NotifyIcon
-                    tb = (TaskbarIcon)FindResource("MyNotifyIcon");
-                }
-
-                private void MyNotifyIcon_MouseClick(object sender, MouseEventArgs e)
-                {
-                    if (e.Button == MouseButtons.Left)
+                    MouseEventArgs me = (MouseEventArgs)e;
+                    if (me.Button == MouseButtons.Left)
                     {
                         if (WindowState == WindowState.Minimized)
                         {
@@ -72,10 +73,55 @@ namespace TrayBrightness
                             this.Hide();
                             this.WindowState = WindowState.Minimized;
                         }
-                    }
-                }
-        */
 
+                    }
+                };
+            ni.ContextMenu = cm;
+            cm.MenuItems.AddRange(
+                    new System.Windows.Forms.MenuItem[] { mi2 });
+            mi2.Index = 0;
+            mi2.Text = "C&onfiguration";
+            cm.MenuItems.AddRange(
+                    new System.Windows.Forms.MenuItem[] { mi1 });
+            mi1.Index = 1;
+            mi1.Text = "E&xit";
+            mi1.Click +=
+                delegate (object sender, EventArgs args)
+                {
+                    System.Windows.Application.Current.Shutdown();
+                };
+
+
+
+        }
+
+
+        /*                private TaskbarIcon tb;
+
+                        private void InitApplication()
+                        {
+                            //initialize NotifyIcon
+                            tb = (TaskbarIcon)FindResource("MyNotifyIcon");
+                        }
+
+                        private void MyNotifyIcon_MouseClick(object sender, MouseEventArgs e)
+                        {
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                if (WindowState == WindowState.Minimized)
+                                {
+                                    this.WindowState = WindowState.Normal;
+                                    this.Show();
+                                }
+                                else if (WindowState == WindowState.Normal)
+                                {
+                                    this.Hide();
+                                    this.WindowState = WindowState.Minimized;
+                                }
+                            }
+                        }
+
+        */
 
 
         /////// TODO //////////
@@ -87,32 +133,33 @@ namespace TrayBrightness
         //// light sensor settings
 
         protected override void OnStateChanged(EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-            this.Hide();
-            base.OnStateChanged(e);
-        }
+            {
+                if (WindowState == WindowState.Minimized)
+                this.Hide();
+                base.OnStateChanged(e);
+            }
 
         private void ReadInfo(Monitor m) // Read info about current monitor
-        {
-            // Set Name 
-            monName.Text = m.Name;
-            // Set slider
-            slValue.IsEnabled = m.Brightness.Supported;
-            slValue.Maximum = m.Brightness.Max;
-            slValue.Value = m.Brightness.Current;
-        }
+            {
+                // Set Name 
+                monName.Text = m.Name;
+                // Set slider
+                slValue.IsEnabled = m.Brightness.Supported;
+                slValue.Maximum = m.Brightness.Max;
+                slValue.Value = m.Brightness.Current;
+            }
 
-       private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            uint i = (uint)e.NewValue;
-            NativeMethods.SetMonitorBrightness(_monitorCollection[selectedMonitor].HPhysicalMonitor, i);
-        }
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+            {
+                uint i = (uint)e.NewValue;
+                NativeMethods.SetMonitorBrightness(_monitorCollection[selectedMonitor].HPhysicalMonitor, i);
+            }
 
         private bool MonitorEnum(IntPtr hMonitor, IntPtr hdcMonitor, ref System.Drawing.Rectangle lprcMonitor, IntPtr dwData)
-        {
-            _monitorCollection.Add(hMonitor);
-            return true;
-        }
+            {
+                _monitorCollection.Add(hMonitor);
+                return true;
+            }
+
     }
 }

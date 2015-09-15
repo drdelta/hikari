@@ -27,6 +27,12 @@
          >
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Profile"
+                        
+                              
+                              
+                              >
+                    </MenuItem>
                     <MenuItem Header="Settings"
                               Command="{commands:SettingsCommand}"
                               CommandParameter="{Binding}"
